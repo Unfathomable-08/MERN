@@ -1,18 +1,13 @@
-const mongoose = require("mongoose");
+const mysql = require("mysql2/promise");
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URI, {
-            serverSelectionTimeoutMS: 60000,  // Increase timeout to 60 seconds
-            socketTimeoutMS: 60000,           // Increase socket timeout
-            connectTimeoutMS: 60000,          // Increase connection timeout
-        });
-        console.log("MongoDB Connected Successfully");
-    } catch (error) {
-        console.error("MongoDB Connection Failed:", error.message);
-        process.exit(1); // Exit process with failure
-    }
-};
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "124711131720",
+  database: "lmsdb",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
 
-
-module.exports = connectDB;
+module.exports = db;

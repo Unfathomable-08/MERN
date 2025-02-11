@@ -17,7 +17,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "/Project/build/$1"
+        "dest": "/Project/dist/$1"
       }
     ]
   }

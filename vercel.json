@@ -2,22 +2,22 @@
     "version": 2,
     "builds": [
       {
-        "src": "users/index.js",
-        "use": "@vercel/node"
+        "src": "Project/package.json",
+        "use": "@vercel/static-build"
       },
       {
-        "src": "Project/package.json",
-        "use": "@vercel/static"
+        "src": "api/index.js",
+        "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/users/(.*)",
+        "src": "/api/(.*)",
         "dest": "/api/index.js"
       },
       {
         "src": "/(.*)",
-        "dest": "/Project/$1"
+        "dest": "/Project/build/$1"
       }
     ]
   }
